@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Tutorial Flask: Miniblog{% endblock %}
+{% block content %}
+{% for post in posts.items %}
+  
+    <!-- <ul >
+      <li>species: {{ post.species }}</li>
+      <li>wd:{{post.wd}}</li>
+    </ul> -->
+    <table class="table table-bordered", paginationLoop: false>
+      <thead>
+        <tr>
+          <th scope="col">Species</th>
+          <th scope="col">WD</th>
+          <th scope="col">origin</th>
+          <th scope="col">mz</th>
+          <th scope="col">intensity</th>
+          <th scope="col">file</th>
+        </tr>
+      </thead>
+      {% for post in posts.items %}
+      <tbody>
+        <tr>
+          <th scope="row">{{post.species}}</th>
+          <td>{{post.wd}}</td>
+          <td>{{post.origin}}</td>
+          <td>{{post.mz}}</td>
+          <td>{{post.intensity}}</td>
+          <td>{{post.filename}}</td>
+        </tr>
+        
+      </tbody>
+      {% endfor %}
+    </table>
+  
+    {% endfor %}
+{% if posts.has_prev %}<a href="{{ url_for('search.all_db', page=posts.prev_num) }}">&lt;&lt; Previous</a>{% else %}&lt;&lt; Previous{% endif %} | 
+{% if posts.has_next %}<a href="{{ url_for('search.all_db', page=posts.next_num) }}">Next &gt;&gt;</a>{% else %}Next &gt;&gt;{% endif %}
+
+  </body>
+{% endblock %}

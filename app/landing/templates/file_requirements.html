@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Database Manager Instructions{% endblock %}
+{% block content %}
+<p>This program let you add txt files containing spectrum to ForeST. For the database and the consensus calculations to work correctly files must fill some requirements:
+    <ul>
+        <li>They must be text files (txt)</li>
+        <li>They should not contain more than two lines of text before the spectrum data</li>
+        <li>Files should follow the file name conventions GenusSpecie_wd_origin.txt:
+            <ul>
+            <li>	No spaces</li>
+            <li>	Underscores between fields</li>
+            <li>	Dashes for amendments to specific fields</li>
+            <li>	No periods or non-alphanumeric symbols</li>
+        </ul> 
+        <li> Files must contain mz as first column and normalized to base peak intensity as second colum. A third column with absolute intensity information will be disregarded by the program but it will remain in the original file. If your files only contain absolute intensity please <a href={{url_for("db_manager.normalize")}}> normalize </a> them before adding them to the database. </li>
+    </ul>
+</p>
+{% endblock %}

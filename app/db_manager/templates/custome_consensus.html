@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}ForeST DB Manager{% endblock %}
+{% block content %}
+<p>Here you can calculate the consensus spectrum for a group of txt files. All the files must be normalized, if they are not you can  <a href={{url_for("db_manager.normalize")}}>click here </a> to normalize them. They should contain two columns the first with mz values and the second with the relative intensity.  </p>
+<p>The consensus spectrum is calculated using an sliding window algorithm to determine the real peaks for all the spectra. The size of the bins used for the calculation is 0.003 m/z units, and the window size is 0.01. All peaks below 1% (relative intensity) are considered to be noise and the peak presence of 0.5 means that only peaks present in at least 50% of the samples are taken into account to calcutale the consensus spectra. You can manipulate these parameters indicating different values in the corresponding box.  </p>
+<p>Select file(s) to calculate the consensus spectrum:</p>
+<div class="container">
+	<div class="row">
+	  <div class="col">
+		
+
+<form method="POST" action=""  enctype="multipart/form-data" novalidate>
+	{{form.hidden_tag()}}  
+		<div>
+			{{form.file}}
+			{% for error in form.file.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+		</div>
+		<div>
+			<br>{{form.submit_file()}}
+		</div>	
+	  </div>
+
+	  <div class="col">
+		<form>
+			
+			<div class="row">
+			  <div class="col">
+			{{form.step.label}}
+		</div>
+		<div class="col">
+
+			{{form.step}}
+		</div>
+
+			{% for error in form.step.errors %}
+            <span style="color: red;">{{ error }}</span>
+			{% endfor %}
+		</div>	
+		</form>
+
+		<form>
+			<div class="row">
+			  <div class="col">
+			{{form.window.label}}
+			</div>
+			<div class="col">
+			{{form.window}}
+			</div>
+			{% for error in form.window.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+		</div>
+	</form>
+		<form>
+			<div class="row">
+			  <div class="col">
+			{{form.noise_level.label}}
+		</div>
+		<div class="col">
+			{{form.noise_level}}
+		</div>
+			{% for error in form.noise_level.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+		</div>
+	</form>
+
+	<form>
+			<div class="row">
+			  <div class="col">
+			{{form.peak_presence.label}}
+		</div>
+		<div class="col">
+			{{form.peak_presence}}
+		</div>
+			{% for error in form.peak_presence.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+		</div>
+	</form>
+	  </div>
+	</div>
+		
+		
+{% endblock %} 

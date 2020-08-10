@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Consensus spectra ForeST{% endblock %}
+{% block content %}
+<form method="POST" action=""  enctype="multipart/form-data" novalidate>
+    <p>This is the consensus spectrum for the txt files you use as input. The blue dots represent all the m/z values and intensities for all the spectra. And the red line indicates those that were selected for the consensus spectrum. </p>
+
+    <div>
+        {{form.submit()}}<br>
+    </div>
+</form>
+    {% for plot in plots %}
+        {% for part in plot %}
+            {{part | safe}}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

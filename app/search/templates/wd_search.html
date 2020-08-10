@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Search by wd number in ForeST database{% endblock %}
+{% block content %}
+<div class= "container">
+  <p>This search will display the information available in ForeST database for a WD number. Write in the box the wd number you want to search. You should include wd followed by the number, for example WD66432. </p>
+
+</div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert">{{ message }}</div>
+            <!-- <li>{{ message }}</li> -->
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    
+  <div class='container'>
+    
+<form action="" method="post" novalidate>
+    {{form.hidden_tag()}}
+    <div>
+        
+        {{form.wd(size=64)}} <br>
+        {% for error in form.wd.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <br>
+    {{form.submit()}}
+  </form>
+
+</div><br>
+
+{% endblock %}

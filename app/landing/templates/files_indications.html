@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}ForeST database{% endblock %}
+{% block content %}
+<p class="mx-auto">
+    Files must be consistently named according to the following nomenclature:
+
+    
+<h3 class="mx-auto">GenusSpecie_wd_origin.txt</h3>
+        
+<p class="mx-auto"> The program automatically detects the underscores as a new field in the database, so if you name incorrectly the files the data will not be added correctly to the database.<br></p>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">GenusSpecie</th>
+            <th scope="col">WD</th>
+            <th scope="col">Origin</th>
+          </tr>
+        </thead>
+      </table>
+    <p class="mx-auto"> In the case more information needs to be added to the file name you should use other symbol as "-", however since all tables in the database are automatically updated this will affect the automatization processes of the software. <br> 
+    For example if you add something like:</p>
+    <h3 class="mx-auto"> BaillonellaToxisperma_Moabi-1_WD190725_FromGabon.txt </h3>
+    <p class="mx-auto"> this will cause an error in the program adding Moabi-1 as the WD number and WD190725 as the origin and FromGabon will be disregarded from the database (as seen in row 1). 
+    </p>
+    <table class="table"> 
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">GenusSpecie</th>
+            <th scope="col">WD</th>
+            <th scope="col">Origin</th>
+            <th scope="col">Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>BaillonellaToxisperma</td>
+            <td>Moabi-1</td>
+            <td>WD190725</td>
+            <td>Wrong field order</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>BaillonellaToxisperma-Moabi</td>
+            <td>WD190725</td>
+            <td>FromGabon</td>
+            <td>Good field order but not included in the specie</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>BaillonellaToxisperma</td>
+            <td>WD190725-1</td>
+            <td>FromGabon</td>
+            <td>This would be the best option</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mx-auto"> If you add something to the GenusSpecie field, for example: </p>
+        <h3 class="mx-auto">BaillonellaToxisperma-Moabi-1_WD190725_FromGabon.txt</h3> 
+        <p class="mx-auto">Here the GenusSpecie field in the database will be added as BaillonellaToxisperma-Moabi and this will cause for it to be considered as a different specie from BaillonellaToxisperma and it will not be considered for the consensus spectra calculations for the specie (row 2). </p>
+        <p class="mx-auto"> The best way to include extra information is to put it at the end with a underscore separator, this will be recorded in the database in the name file and it will not mess with the automatization processes: </p> <h3 class="mx-auto"> BaillonellaToxisperma_WD190725-1_FromGabon_Moabi.txt</h3> <p class="mx-auto">The number one is added in this case to the WD number because this WD is found duplicated in the files. The best way to manage databases is to create unique WD numbers, since we have duplicated WD numbers adding the extra -1 helps to differentiate between files (row 3).  
+</p>
+        
+{% endblock %}

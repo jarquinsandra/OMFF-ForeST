@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}ForeST DB Manager{% endblock %}
+{% block content %}
+<p>This section allow you to normalize files. It is important to add files to the database with the same normalization method. You can input files by batch and they will be returned as a zip file normalized. These are the files you should use to upload to the database. If your files are already normalized you can upload them directly. Your files will have the same name as the ones you input, however you must take into consideration that absolute intensity will not be shown in the new files.</p>
+<p>Normalization is performed using the highest peak as 100% and calculating the other relative intensities as a percentage of this peak.</p>
+<p>Select file(s)</p>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul div class="alert alert-success" role="alert">
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+<form method="POST" action=""  enctype="multipart/form-data" novalidate>
+	{{form.hidden_tag()}}  
+		<div>
+			{{form.file(size=32)}}
+			{% for error in form.file.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+		</div>
+			
+		<div>
+            {{form.submit_file()}}
+		</div>	</p>
+		
+		
+{% endblock %} 

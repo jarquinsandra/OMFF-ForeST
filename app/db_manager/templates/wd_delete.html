@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Delete by wd number in ForeST database{% endblock %}
+{% block content %}
+<p>This page let you delete a raw spectrum from the database with the WD number, notice that once you press the DELETE button the spectrum will be removed from the database, and when the Consensus spectra are updated it will not include this WD number spectrum. If you want to add a new spectrum <a href={{url_for("db_manager.upload")}}>click here </a>. </p>
+<p>WD number to delete:</p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert">{{ message }}</div>
+            <!-- <li>{{ message }}</li> -->
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    
+   
+<form action="" method="post" novalidate>
+    {{form.hidden_tag()}}
+    <div>
+
+        {{form.wd(size=64)}} <br>
+        {% for error in form.wd.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+    
+   <div>
+        {{form.submit()}}
+    </div>
+</form>
+{% endblock %}

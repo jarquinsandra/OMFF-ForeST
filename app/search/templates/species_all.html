@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}All species in ForeST{% endblock %}
+{% block content %}
+
+<p>This table contains all the species in ForeST with the number of spectra available for each one. </p><br>
+
+<form method="POST" action=""  enctype="multipart/form-data" novalidate>
+    <div>
+        {{form.submit()}}
+    </div>
+</form><br>
+
+<!-- <div class="row">
+    <div class="input-field col s12">
+        <button class="waves-effect waves-light btn" id="contact-form-button" type="submit">submit</button>
+    </div>
+</div> -->
+
+<div class= 'container'>
+    
+    <table >
+{% for table in tables %}
+{{ table|safe }}
+       
+{% endfor %}
+</table>
+
+</div>
+
+
+{% endblock %}

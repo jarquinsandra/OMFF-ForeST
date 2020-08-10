@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Search by wd number in ForeST database{% endblock %}
+{% block content %}
+<p>The results for your search on {{wd}} number are:</p>
+<p>The first column is an ID number for the MYSQL database and is does not reflect any specific order. </p>
+
+<div class= 'container'>
+    
+    <table >
+{% for table in tables %}
+            {{ table|safe }}
+        </table>
+
+    </div>
+{% endfor %}
+{% endblock %}

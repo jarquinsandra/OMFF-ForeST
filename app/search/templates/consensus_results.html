@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Consensus spectra ForeST{% endblock %}
+{% block content %}
+<h3>Consensus Spectra</h3>
+<form method="POST" action=""  enctype="multipart/form-data" novalidate>
+    <div>
+        {{form.submit()}}
+    </div>
+</form>
+<p>This is the consensus spectra for {{species}}, put the mouse in the peaks to get information about each peak, you can use the tools on the right side of the spectrum to explore or zoom it. </p>
+    {% for plot in plots %}
+        {% for part in plot %}
+            {{part | safe}}
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

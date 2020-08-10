@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Search by species in ForeST database{% endblock %}
+{% block content %}
+<div class = 'container'>
+    
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class=flashes>
+          {% for message in messages %}
+          <div class="alert alert-danger" role="alert">{{ message }}</div>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% endwith %}
+<p>In this section you can search the species in ForeST database. Enter the species or genus:</p>
+    <form action="" method="post" novalidate>
+        {{form.hidden_tag()}}
+        <div class=form-group>
+           
+            {{form.species(size=64)}}<br>
+            {% for error in form.species.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+    
+        </div>
+        
+        <div><br>
+            {{form.submit()}}
+        </div>
+    </form>
+        
+</div>
+{% endblock %}

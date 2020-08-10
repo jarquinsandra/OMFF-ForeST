@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}All WD numbers with their species in ForeST{% endblock %}
+{% block content %}
+<p>These are all the WD numbers in ForeST database.<p><br>
+    <form method="POST" action=""  enctype="multipart/form-data" novalidate>
+        <div>
+            {{form.submit()}}
+        </div>
+    </form><br>
+    
+<div class= 'container'>
+    
+<table >
+{% for table in tables %}
+
+{{ table|safe }}
+
+{% endfor %}
+</table>
+
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Consensus spectra consult in ForeST database{% endblock %}
+{% block content %}
+
+<p>This search will display the consensus spectra for the species required when the species is in ForeST database and consensus spectra are updated. If your species is not in the consensus spectra but you find it in the table <a href={{url_for("search.species_all")}}> all species </a> , maybe the spectrum for your species has not been calculated yet. Performing an <a href={{url_for("db_manager.consensus_update")}}> update </a> to the consensus will calculate the spectra for all species.</p>
+<p>Species should be submited in the form GenusSpecie:</p>
+{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul div class="alert alert-success" role="alert">
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+<form action="" method="post" novalidate>
+
+        {{form.hidden_tag()}}
+        <div>
+            {{form.species}}<br>
+            {% for error in form.genus.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+            {% for error in form.species.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div><br>
+        <div>
+            {{form.submit()}}
+        </div>
+    </form>
+        
+{% endblock %}

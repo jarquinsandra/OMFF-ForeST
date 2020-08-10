@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Search by species in ForeST database{% endblock %}
+{% block content %}
+<p>ForeST entries for your query "{{species}}" are shown in the following table: </p>
+<p>The first column is an ID number for the MYSQL database and is does not reflect any specific order. </p>
+   
+<div class= 'container'>
+    
+        <table >
+{% for table in tables %}
+
+            {{ table|safe }}
+        
+{% endfor %}
+
+</table>
+
+</div>
+{% endblock %}

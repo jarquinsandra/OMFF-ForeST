@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}ForeST DB Manager{% endblock %}
+{% block content %}
+<p>The following files need changes before adding them to the database:</p>
+{%for file in file_nor%}
+<ul>
+    <li>The file {{file.filename}} needs to be normalized</li>
+</ul>
+{% endfor %}
+{%for file in countus%}
+<ul>
+    <li>Change the name of the file {{file.filename}}, it has more than 2 underscores. </li>
+</ul>
+{% endfor %}
+{%for file in countsp%}
+<ul>
+    <li>Remove white spaces in the name for the file: {{file.filename}}.</li>
+</ul>
+{% endfor %}
+{% endblock %} 

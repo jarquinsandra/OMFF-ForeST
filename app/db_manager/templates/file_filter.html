@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}ForeST DB Manager{% endblock %}
+{% block content %}
+This is a filter for your files prior to including them in the database, if your files need normalization the <a href={{url_for("db_manager.normalize")}}> normalization </a> module. 
+<p>Select file(s) to upload</p>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul div class="alert alert-success" role="alert">
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+
+<form method="POST" action=""  enctype="multipart/form-data" novalidate>
+	{{form.hidden_tag()}}  
+		<div>
+			{{form.file.label}}
+			{{form.file(size=32)}}
+			{% for error in form.file.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+		</div>
+			
+		<div>
+            {{form.submit_file()}}
+		</div>	</p>
+		
+{% endblock %} 
