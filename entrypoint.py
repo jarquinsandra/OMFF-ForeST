@@ -7,7 +7,7 @@ AUTOR: jarquinsandra
 import os
 from app import create_app
 from flask import render_template
-
+from waitress import serve
 
 
 #These are used for config files in case it needs to be deployed to internet
