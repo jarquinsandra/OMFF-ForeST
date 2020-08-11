@@ -16,7 +16,7 @@ from sqlalchemy import create_engine
 from flask import url_for, redirect, render_template, request, url_for, make_response, flash, Response, send_file, session
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 from .forms import UpdateConsensusForm
 from .forms import NormalizationForm
 from .forms import CalculateConsensusForm
