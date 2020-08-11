@@ -14,7 +14,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 url='mysql+pymysql://root:root@localhost:3306/Forest'
 
-def create_app(settings_module):
+def create_app():
     app = Flask(__name__)
     # Load the config file specified by the APP environment variable
     #app.config.from_object(settings_module)
