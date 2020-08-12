@@ -23,7 +23,6 @@ class NormalizationForm(FlaskForm):
 
 class UpdateConsensusForm(FlaskForm):
     submit_signal = SubmitField('Calculate consensus')
-    comments = StringField('Anotations', widget=TextArea())
 
 class CalculateConsensusForm(FlaskForm):
     file = MultipleFileField('txt files')
